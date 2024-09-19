@@ -17,14 +17,14 @@ set(HIDDEN_TEST_SUITES "hidden_parse_tests" "hidden_read_test" "write_hidden_tes
 
 if (BUILD_CODEGRADE_TESTS)
   foreach(TEST_SUITE IN LISTS TEST_SUITES)
-  add_executable(${TEST_SUITE} tests/src/${TEST_SUITE}.cpp tests/src/tests_utils.cpp src/hw2.c)
+  add_executable(${TEST_SUITE} tests/src/${TEST_SUITE}.cpp src/hw2.c)
   target_compile_options(${TEST_SUITE} PUBLIC -g -Wall -Wextra -Wshadow -Wpedantic -Wdouble-promotion -Wformat=2 -Wundef -Werror)
   target_include_directories(${TEST_SUITE} PUBLIC include tests/include)
   target_link_libraries(${TEST_SUITE} PUBLIC gtest gtest_main pthread m)
   endforeach()
 
   foreach(TEST_SUITE IN LISTS HIDDEN_TEST_SUITES)
-  add_executable(${TEST_SUITE} tests/src/${TEST_SUITE}.cpp tests/src/tests_utils.cpp src/hw2.c)
+  add_executable(${TEST_SUITE} tests/src/${TEST_SUITE}.cpp src/hw2.c)
   target_compile_options(${TEST_SUITE} PUBLIC -g -Wall -Wextra -Wshadow -Wpedantic -Wdouble-promotion -Wformat=2 -Wundef -Werror)
   target_include_directories(${TEST_SUITE} PUBLIC include tests/include test/inputs)
   target_link_libraries(${TEST_SUITE} PUBLIC gtest gtest_main pthread m)
